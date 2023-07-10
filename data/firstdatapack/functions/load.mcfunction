@@ -40,7 +40,7 @@ scoreboard objectives add intended_mana_use dummy
 
 scoreboard objectives add powerUse minecraft.used:minecraft.warped_fungus_on_a_stick
 
-give @a minecraft:warped_fungus_on_a_stick{test1:1}
+# give @a minecraft:warped_fungus_on_a_stick{test1:1}
 # give @a minecraft:warped_fungus_on_a_stick{test2:1}
 
 

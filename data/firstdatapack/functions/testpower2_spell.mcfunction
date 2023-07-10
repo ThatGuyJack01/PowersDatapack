@@ -13,6 +13,6 @@ execute as @e[tag=spell] at @s run summon falling_block ~-1 ~ ~-1 {BlockState:{N
 
 kill @e[tag=spell]
 
-execute at @e[tag=icespell_middle] run particle dust 0.9 0.9 1 2 ~ ~ ~ 1 0 1 10 100 force
+execute at @e[tag=icespell_middle] run particle dust 0.9 0.9 1 2 ~ ~-0.25 ~ 1 0 1 10 25 force
 playsound minecraft:block.glass.break master @a ~ ~ ~ 100 0.2
 kill @e[type=item,nbt={Item:{id:"minecraft:ice"}}] 
