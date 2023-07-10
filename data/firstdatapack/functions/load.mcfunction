@@ -58,3 +58,8 @@ forceload add 0 0
 
 scoreboard objectives add timer dummy
 scoreboard objectives add icespell_killed dummy
+
+
+
+
+scoreboard objectives add floatPlayerY dummy

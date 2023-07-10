@@ -89,6 +89,9 @@ execute as @a[scores={powerUse=1..}] run function #cast_power
 execute as @a[tag=drain] run scoreboard players remove @s Mana 1
 
 
+execute as @a store result score @s playerY run data get entity @s Pos[1] 1
+
+
 
 
 
@@ -115,3 +118,7 @@ execute as @a[tag=drain] run scoreboard players remove @s Mana 1
 
 # execute as @a at @s positioned over motion_blocking if entity @s[dy=999] run effect give @s wither 1 1 true
 # make a custom function to teleport the player, play sounds, and damage!
+
+
+execute as @a if score @s playerY > @s floatPlayerY run scoreboard players operation @s floatPlayerY = @s playerY
+execute as @a if data entity @s OnGround run scoreboard players set @s floatPlayerY -100
