@@ -88,6 +88,9 @@ execute as @a[scores={powerUse=1..}] run function #cast_power
 
 execute as @a[tag=drain] run scoreboard players remove @s Mana 1
 
+# == Slime == #
+# Fast Attack Ability:
+execute as @a[tag=slime] run attribute @s minecraft:generic.attack_speed base set 6
 
 
 
