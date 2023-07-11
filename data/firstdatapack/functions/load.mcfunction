@@ -62,4 +62,5 @@ scoreboard objectives add icespell_killed dummy
 
 
 
-scoreboard objectives add floatPlayerY dummy
+scoreboard objectives add levTimer dummy
+scoreboard players set @a levTimer 0

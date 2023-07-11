@@ -120,5 +120,10 @@ execute as @a store result score @s playerY run data get entity @s Pos[1] 1
 # make a custom function to teleport the player, play sounds, and damage!
 
 
-execute as @a if score @s playerY > @s floatPlayerY run scoreboard players operation @s floatPlayerY = @s playerY
-execute as @a if data entity @s OnGround run scoreboard players set @s floatPlayerY -100
+# execute as @a if score @s playerY > @s floatPlayerY run scoreboard players operation @s floatPlayerY = @s playerY
+# execute as @a if data entity @s OnGround run scoreboard players set @s floatPlayerY 0
+
+execute as @a[tag=air] if predicate has_lev run scoreboard players add @s levTimer 1
+execute as @a[tag=air,scores={levTimer=80..}] run effect clear @s levitation
+execute as @a[tag=air,scores={levTimer=80..}] run effect give @s levitation infinite 255 true
+scoreboard players reset @s lev
