@@ -6,9 +6,34 @@ give headcrabdestroye stone_button{tag:test}
 # minecraft:warped_fungus_on_a_stick
 execute at @a run summon item ~ ~ ~ {Item:{id:"minecraft:leather_boots",Count:1b,tag:{test:1b}}}
 
-
 scoreboard objectives add playerYmodified dummy
 scoreboard objectives add playerY dummy
+
+# Slime:
+kill @e[tag=death,type=armor_stand]
+execute as @a[tag=slime] at @s run summon armor_stand ~ ~ ~ {Tags:["death"],Small:1b,Marker:1b,Invisible:1b}
+scoreboard objectives add onGround dummy
+scoreboard objectives add getBlock dummy
+scoreboard objectives add negateFall dummy
+scoreboard objectives add leap dummy
+scoreboard objectives add bounce dummy
+scoreboard objectives add deathTimer dummy
+scoreboard objectives add count dummy
+scoreboard objectives add water_stored dummy
+scoreboard objectives add lava_stored dummy
+scoreboard objectives add waterTimer dummy
+scoreboard objectives add lavaTimer dummy
+scoreboard objectives add hunger food
+scoreboard objectives add sneak minecraft.custom:minecraft.sneak_time
+scoreboard objectives add fall minecraft.custom:minecraft.fall_one_cm
+scoreboard objectives add deaths minecraft.custom:minecraft.deaths
+scoreboard players set @a deaths 0
+execute as @a[tag=slime] unless entity @s[scores={water_stored=1..}] run scoreboard players set @s water_stored 0
+execute as @a[tag=slime] unless entity @s[scores={lava_stored=1..}] run scoreboard players set @s lava_stored 0
+team add slime
+team modify slime friendlyFire false
+kill @e[tag=liq]
+kill @e[tag=checker]
 
 scoreboard objectives add Mana dummy
 scoreboard objectives add mana_regen_time dummy

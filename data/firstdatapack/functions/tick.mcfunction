@@ -1,7 +1,7 @@
 # ========================================= #
 # ============ # MANA SYSTEM # ============ #
 # ========================================= #
-execute as @a run title @s actionbar ["",{"text":"Mana: ","color":"aqua"},{"score":{"name":"@s","objective":"Mana"},"color":"aqua"},{"text":"/","color":"aqua"},{"score":{"name":"@s","objective":"mana_max"},"color":"aqua"}]
+execute as @a[tag=!slime] run title @s actionbar ["",{"text":"Mana: ","color":"aqua"},{"score":{"name":"@s","objective":"Mana"},"color":"aqua"},{"text":"/","color":"aqua"},{"score":{"name":"@s","objective":"mana_max"},"color":"aqua"}]
 
 scoreboard players add @a mana_ticks 1
 execute as @a if score @s Mana < @s mana_max run execute if score @s mana_ticks = @s mana_regen_time run scoreboard players operation @s Mana += @s mana_regen_count
@@ -62,18 +62,10 @@ execute as @e[tag=icespell] at @s unless block ~ ~-1 ~ air run function firstdat
 
 execute as @e[tag=icespell_middle] at @s run particle minecraft:snowflake ~ ~1 ~ 0 0.05 0 0.25 1
 
+# ======================================== #
 
-
-
-
-
-
-
-
-
-
-
-
+# == Slime == #
+function firstdatapack:slime
 
 
 
@@ -88,9 +80,8 @@ execute as @a[scores={powerUse=1..}] run function #cast_power
 
 execute as @a[tag=drain] run scoreboard players remove @s Mana 1
 
-# == Slime == #
-# Fast Attack Ability:
-execute as @a[tag=slime] run attribute @s minecraft:generic.attack_speed base set 6
+
+
 
 
 

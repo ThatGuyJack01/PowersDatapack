@@ -1,0 +1,2 @@
+execute as @a[tag=slime,sort=nearest,limit=1,scores={water_stored=1..}] at @s run setblock ~ ~ ~ water
+execute as @a[tag=slime,sort=nearest,limit=1,scores={water_stored=1..}] at @s run scoreboard players remove @s water_stored 1
