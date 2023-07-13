@@ -79,10 +79,4 @@ execute as @a[tag=slime,scores={sneak=0}] at @s if block ~ ~ ~ slime_block if bl
 
 scoreboard players set @a[tag=slime] sneak 0
 # Phase Through Non-Solid Blocks
-execute as @e[tag=slime] at @s if block ~ ~ ~ chain align x align z positioned ~0.5 ~ ~0.5 run summon falling_block ~ ~ ~ {BlockState:{Name:"minecraft:chain"},NoGravity:1b,Time:-1000,Tags:["temp"]}
-execute as @e[tag=slime] at @s if block ~ ~1 ~ chain align x align z positioned ~0.5 ~ ~0.5 run summon falling_block ~ ~1 ~ {BlockState:{Name:"minecraft:chain"},NoGravity:1b,Time:-1000,Tags:["temp"]}
-execute as @e[tag=slime] at @s if block ~ ~ ~ chain run setblock ~ ~ ~ air
-execute as @e[tag=slime] at @s if block ~ ~1 ~ chain run setblock ~ ~1 ~ air
-execute as @e[tag=slime] at @s as @e[type=falling_block,tag=temp,distance=2..] at @s run setblock ~ ~ ~ chain
-execute as @a[tag=!slime] at @s as @e[tag=temp,type=falling_block,distance=..1] at @s run setblock ~ ~ ~ chain
-execute as @e[tag=slime] at @s as @e[type=falling_block,tag=temp,distance=2..] run kill @s
+function firstdatapack:phase_through
