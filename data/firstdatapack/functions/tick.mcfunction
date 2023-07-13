@@ -38,7 +38,7 @@ function firstdatapack:characters/enderman
 # ======================================== #
 
 # == Ender Dragon == #
-execute as @a[tag=enderdragon] at @s if entity @e[type=end_crystal,distance=..4] run function firstdatapack:enderdragon
+execute as @a[tag=enderdragon] at @s if entity @e[type=end_crystal,distance=..4] run function firstdatapack:enderdragon_powers/enderdragon
 execute as @e[type=end_crystal] run function firstdatapack:enderdragon_powers/crystal_main
 execute as @e[tag=enderdragon] run scoreboard players operation @s playerYmodified = @s playerY
 execute as @e[tag=enderdragon] run scoreboard players operation @s playerYmodified -= !int playerYmodified
@@ -50,6 +50,7 @@ execute as @e[tag=enderdragon] store result storage test dummy int 1 run scorebo
 # Ice power
 
 execute as @a[scores={click=1..}] if data entity @s {SelectedItem:{tag:{test2:1}}} at @s run function firstdatapack:testpower2
+execute as @a[scores={click=1..}] if data entity @s {SelectedItem:{tag:{test1:1}}} at @s run function firstdatapack:testpower1
 
 scoreboard players add @e[tag=icespell] timer 1
 execute as @e[scores={timer=10..}] at @s run data merge entity @s {NoGravity:0b}
