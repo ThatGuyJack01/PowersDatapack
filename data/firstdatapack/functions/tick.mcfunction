@@ -24,7 +24,7 @@ scoreboard players operation @a mana_max = !default mana_max
 
 scoreboard players enable @a reset_mana
 # execute as @a if score @s mana_max < !default mana_max run trigger mana_reset
-execute as @a if score @s reset_mana >= !default reset_mana run function #mana_reset
+execute as @a if score @s reset_mana >= !default reset_mana run function firstdatapack:mana_reset
 # execute as @a[scores={reset_mana=1..}] run function #mana_reset
 
 # ========================================= #
@@ -38,8 +38,8 @@ function firstdatapack:characters/enderman
 # ======================================== #
 
 # == Ender Dragon == #
-execute as @a[tag=enderdragon] at @s if entity @e[type=end_crystal,distance=..4] run function firstdatapack:playerdragon
-execute as @e[type=end_crystal] run function firstdatapack:crystal_main
+execute as @a[tag=enderdragon] at @s if entity @e[type=end_crystal,distance=..4] run function firstdatapack:enderdragon
+execute as @e[type=end_crystal] run function firstdatapack:enderdragon_powers/crystal_main
 execute as @e[tag=enderdragon] run scoreboard players operation @s playerYmodified = @s playerY
 execute as @e[tag=enderdragon] run scoreboard players operation @s playerYmodified -= !int playerYmodified
 execute as @e[tag=enderdragon] store result storage test dummy int 1 run scoreboard players get @s playerYmodified
@@ -48,12 +48,15 @@ execute as @e[tag=enderdragon] store result storage test dummy int 1 run scorebo
 
 # == Water == #
 # Ice power
+
+execute as @a[scores={click=1..}] if data entity @s {SelectedItem:{tag:{test2:1}}} at @s run function firstdatapack:testpower2
+
 scoreboard players add @e[tag=icespell] timer 1
 execute as @e[scores={timer=10..}] at @s run data merge entity @s {NoGravity:0b}
 execute as @e[tag=icespell_middle] at @s as @a[distance=..3] run effect give @s slowness 6 3 true
 execute as @e[tag=icespell_middle] at @s as @a[distance=..3] run effect give @s mining_fatigue 6 2 true
 execute as @e[tag=icespell_middle] at @s as @e[distance=..3] run damage @s 2 freeze
-execute as @e[tag=icespell] at @s unless block ~ ~-1 ~ air run function firstdatapack:icespell_particles
+execute as @e[tag=icespell] at @s unless block ~ ~-1 ~ air run function firstdatapack:water_powers/icespell_particles
 execute as @e[tag=icespell_middle] at @s run particle minecraft:snowflake ~ ~1 ~ 0 0.05 0 0.25 1
 
 # ======================================== #

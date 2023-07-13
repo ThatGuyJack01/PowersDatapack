@@ -48,52 +48,24 @@ team add slime
 team modify slime friendlyFire false
 kill @e[tag=liq]
 kill @e[tag=checker]
-
 scoreboard objectives add Mana dummy
 scoreboard objectives add mana_regen_time dummy
 scoreboard objectives add mana_regen_count dummy
 scoreboard objectives add mana_max dummy
 scoreboard objectives add mana_ticks dummy
-
 scoreboard players set @a Mana 0
 scoreboard players set @a mana_regen_max 0
-
 scoreboard objectives add reset_mana trigger
 scoreboard players set !default mana_max 300
 scoreboard players set !default Mana 0
 scoreboard players set !default mana_regen_time 10
 scoreboard players set !default mana_regen_count 1
-
 scoreboard players set !default reset_mana 1
-
-
 scoreboard objectives add intended_mana_use dummy
-
-
 # execute as @a run function #mana_reset
-
-
-
-
-
-
 scoreboard objectives add powerUse minecraft.used:minecraft.warped_fungus_on_a_stick
-
 # give @a minecraft:warped_fungus_on_a_stick{test1:1}
 # give @a minecraft:warped_fungus_on_a_stick{test2:1}
-
-
-
-
-
-
 forceload add 0 0
-
-
-
-
-
-
-
 scoreboard objectives add timer dummy
 scoreboard objectives add icespell_killed dummy

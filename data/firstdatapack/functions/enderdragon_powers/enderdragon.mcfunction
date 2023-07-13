@@ -8,4 +8,4 @@ data modify storage dragonpos BeamTarget set value {X:0,Y:0,Z:0}
 data modify storage dragonpos BeamTarget.X set from storage dragonpos Pos[0]
 data modify storage dragonpos BeamTarget.Y set from storage dragonpos Pos[1]
 data modify storage dragonpos BeamTarget.Z set from storage dragonpos Pos[2]
-execute as @e[type=end_crystal,tag=can_target,distance=..4] run function firstdatapack:as_crystal
+execute as @e[type=end_crystal,tag=can_target,distance=..4] run function firstdatapack:enderdragon_powers/as_crystal
