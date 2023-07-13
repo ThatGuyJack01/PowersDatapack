@@ -1,3 +1,4 @@
+execute as @a[tag=slime] run function firstdatapack:blahblahblah
 # ========================================= #
 # ============ # MANA SYSTEM # ============ #
 # ========================================= #
@@ -86,7 +87,7 @@ execute as @a if entity @s[nbt={Inventory:[{Slot:100b,id:"minecraft:leather_boot
 execute as @a[scores={powerUse=1..}] run function #cast_power
 
 
-execute as @a[tag=drain] run scoreboard players remove @s Mana 1
+execute as @a[tag=drain,scores={Mana=1..}] run scoreboard players remove @s Mana 1
 
 
 execute as @a store result score @s playerY run data get entity @s Pos[1] 1
@@ -123,7 +124,24 @@ execute as @a store result score @s playerY run data get entity @s Pos[1] 1
 # execute as @a if score @s playerY > @s floatPlayerY run scoreboard players operation @s floatPlayerY = @s playerY
 # execute as @a if data entity @s OnGround run scoreboard players set @s floatPlayerY 0
 
-execute as @a[tag=air] if predicate has_lev run scoreboard players add @s levTimer 1
-execute as @a[tag=air,scores={levTimer=80..}] run effect clear @s levitation
-execute as @a[tag=air,scores={levTimer=80..}] run effect give @s levitation infinite 255 true
-scoreboard players reset @s lev
+
+
+
+
+
+# execute as @a[tag=air,nbt={OnGround:0b},scores={sneakTime=1..,isFloating=0}] run function firstdatapack:float
+
+execute as @a[tag=air,scores={hasLev=1..}] run scoreboard players add @s levTimer 1
+execute as @a[tag=air,scores={levTimer=20..}] run effect clear @s levitation
+execute as @a[tag=air,scores={levTimer=20..}] store success score @s isFloating run effect give @s levitation infinite 255 true
+execute as @a[tag=air,scores={isFloating=1..}] at @s run particle cloud ~ ~-0.2 ~ 0.2 0 0.2 0 15 normal
+# execute as @a[tag=air,scores={isFloating=1..}] at @s run tag @s add drain
+execute as @a[tag=air,scores={isFloating=1..,sneakTime=1..}] run effect clear @s levitation
+execute as @a[tag=air,scores={levTimer=20..,sneakTime=1..}] run scoreboard players set @s hasLev 0
+# execute as @a[tag=air,scores={levTimer=20..,sneakTime=1..}] run tag @s remove drain
+execute as @a[tag=air,scores={levTimer=20..,sneakTime=1..}] run scoreboard players set @s isFloating 0
+execute as @a[tag=air,scores={levTimer=20..,sneakTime=1..}] run scoreboard players set @s levTimer 0
+
+execute as @a[tag=air,scores={sneakTime=1..},nbt={OnGround:0b}] run effect give @s slow_falling 1 4 true
+
+execute as @a[scores={sneakTime=1..}] run scoreboard players reset @s sneakTime

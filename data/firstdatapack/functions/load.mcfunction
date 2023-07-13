@@ -4,7 +4,7 @@ gamerule naturalRegeneration false
 data modify entity headcrabdestroye foodLevel set value 0
 give headcrabdestroye stone_button{tag:test}
 # minecraft:warped_fungus_on_a_stick
-execute at @a run summon item ~ ~ ~ {Item:{id:"minecraft:leather_boots",Count:1b,tag:{test:1b}}}
+# execute at @a run summon item ~ ~ ~ {Item:{id:"minecraft:leather_boots",Count:1b,tag:{test:1b}}}
 
 
 scoreboard objectives add playerYmodified dummy
@@ -64,3 +64,11 @@ scoreboard objectives add icespell_killed dummy
 
 scoreboard objectives add levTimer dummy
 scoreboard players set @a levTimer 0
+
+scoreboard objectives add hasLev dummy
+scoreboard players set @s hasLev 0
+
+scoreboard objectives add isFloating dummy
+scoreboard players set @s isFloating 0
+
+scoreboard objectives add sneakTime minecraft.custom:minecraft.sneak_time
