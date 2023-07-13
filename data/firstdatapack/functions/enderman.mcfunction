@@ -1,1 +1,0 @@
-execute as @a[tag=enderman] at @s if block ~ ~ ~ minecraft:water run function #enderman_tp

@@ -10,8 +10,14 @@ scoreboard objectives add playerYmodified dummy
 scoreboard objectives add playerY dummy
 
 # Slime:
+forceload remove all
 kill @e[tag=death,type=armor_stand]
-execute as @a[tag=slime] at @s run summon armor_stand ~ ~ ~ {Tags:["death"],Small:1b,Marker:1b,Invisible:1b}
+kill @e[tag=counter,type=armor_stand]
+kill @e[tag=rotator,type=armor_stand]
+execute as @r at @s run tag @s add loader
+execute as @a[tag=loader] at @s run forceload add ~ ~
+execute as @a[tag=loader] at @s run function firstdatapack:on_load/counters
+tag @a remove loader
 scoreboard objectives add onGround dummy
 scoreboard objectives add getBlock dummy
 scoreboard objectives add negateFall dummy
@@ -23,9 +29,17 @@ scoreboard objectives add water_stored dummy
 scoreboard objectives add lava_stored dummy
 scoreboard objectives add waterTimer dummy
 scoreboard objectives add lavaTimer dummy
+scoreboard objectives add launcherCrafted dummy
+scoreboard objectives add slimeBlockCrafted dummy
+scoreboard objectives add granade dummy
+scoreboard objectives add launch dummy
+scoreboard objectives add launch1 dummy
+scoreboard objectives add thrown dummy
 scoreboard objectives add hunger food
+scoreboard objectives add click minecraft.used:minecraft.warped_fungus_on_a_stick
 scoreboard objectives add sneak minecraft.custom:minecraft.sneak_time
 scoreboard objectives add fall minecraft.custom:minecraft.fall_one_cm
+scoreboard objectives add fall1 minecraft.custom:minecraft.fall_one_cm
 scoreboard objectives add deaths minecraft.custom:minecraft.deaths
 scoreboard players set @a deaths 0
 execute as @a[tag=slime] unless entity @s[scores={water_stored=1..}] run scoreboard players set @s water_stored 0

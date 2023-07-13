@@ -1,0 +1,6 @@
+{
+    "type": "crafting_shaped",
+    "pattern": ["SSS","TTT","AAA"],
+    "key":[{"S":{"item":"minecraft:slime_block"}},{"T":{"item":"minecraft:tnt"}},{"A":{"item":"minecraft:armor_stand"}}],
+    "result": {"item": "minecraft:knowledge_book"}
+}
