@@ -38,7 +38,7 @@ function firstdatapack:characters/enderman
 # ======================================== #
 
 # == Ender Dragon == #
-execute as @a[tag=enderdragon] at @s if entity @e[type=end_crystal,distance=..4] run function firstdatapack:enderdragon_powers/enderdragon
+execute as @a[tag=enderdragon] at @s if entity @e[type=end_crystal,distance=..4] run function firstdatapack:characters/enderdragon
 execute as @e[type=end_crystal] run function firstdatapack:enderdragon_powers/crystal_main
 execute as @e[tag=enderdragon] run scoreboard players operation @s playerYmodified = @s playerY
 execute as @e[tag=enderdragon] run scoreboard players operation @s playerYmodified -= !int playerYmodified
