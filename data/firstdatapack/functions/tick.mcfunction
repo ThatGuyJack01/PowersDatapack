@@ -65,6 +65,11 @@ execute as @e[tag=icespell_middle] at @s run particle minecraft:snowflake ~ ~1 ~
 # == Slime == #
 function firstdatapack:characters/slime
 
+# == default player == #
+execute as @a store result score @s maxPlayerHealth run attribute @s generic.max_health get
+
+execute as @a[nbt={foodLevel:20},tag=!enderdragon] unless score @s playerHealth = @s maxPlayerHealth run function firstdatapack:default_player/natural_regeneration
+execute as @a[nbt={foodLevel:19},tag=!enderdragon] unless score @s playerHealth = @s maxPlayerHealth run function firstdatapack:default_player/natural_regeneration
 
 # # ======================================== #
 

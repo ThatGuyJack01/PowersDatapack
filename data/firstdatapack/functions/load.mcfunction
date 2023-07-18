@@ -69,3 +69,5 @@ scoreboard objectives add powerUse minecraft.used:minecraft.warped_fungus_on_a_s
 forceload add 0 0
 scoreboard objectives add timer dummy
 scoreboard objectives add icespell_killed dummy
+scoreboard objectives add playerHealth health
+scoreboard objectives add maxPlayerHealth dummy
