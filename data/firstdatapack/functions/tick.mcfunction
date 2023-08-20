@@ -1,7 +1,7 @@
 #just do shulkers instead...
-execute as @a at @s if block ~ ~-0.1 ~ water unless block ~ ~ ~ water run effect give @s[scores={sneak=0}] minecraft:levitation 1 255 true
-execute as @a[scores={sneak=1..}] if block ~ ~-0.1 ~ water run effect clear @s levitation
-execute as @a[scores={sneak=1..}] run scoreboard players set @s sneak 0
+execute as @a[tag=water] at @s if block ~ ~-0.1 ~ water unless block ~ ~ ~ water run effect give @s[scores={sneak=0}] minecraft:levitation 1 255 true
+execute as @a[tag=water,scores={sneak=1..}] if block ~ ~-0.1 ~ water run effect clear @s levitation
+execute as @a[tag=water,scores={sneak=1..}] run scoreboard players set @s sneak 0
 
 
 
