@@ -48,6 +48,16 @@ team add slime
 team modify slime friendlyFire false
 kill @e[tag=liq]
 kill @e[tag=checker]
+scoreboard objectives add bleedTick dummy
+scoreboard players set !max bleedTick 20 
+scoreboard players operation !tick bleedTick = !max bleedTick
+scoreboard players remove !tick bleedTick 1
+scoreboard objectives add hiddenBleadCount dummy
+scoreboard players set !max hiddenBleadCount 5
+scoreboard objectives add bleedTimer dummy
+scoreboard players set !min bleedTimer 0
+scoreboard players set !max bleedTimer 5
+scoreboard objectives add reload_server trigger
 
 # Mana:
 scoreboard objectives add Mana dummy

@@ -1,7 +1,7 @@
-#just do shulkers instead...
-execute as @a[tag=water] at @s if block ~ ~-0.1 ~ water unless block ~ ~ ~ water run effect give @s[scores={sneak=0}] minecraft:levitation 1 255 true
-execute as @a[tag=water,scores={sneak=1..}] if block ~ ~-0.1 ~ water run effect clear @s levitation
-execute as @a[tag=water,scores={sneak=1..}] run scoreboard players set @s sneak 0
+# just do shulkers instead...
+# execute as @a[tag=water] at @s if block ~ ~-0.1 ~ water unless block ~ ~ ~ water run effect give @s[scores={sneak=0}] minecraft:levitation 1 255 true
+# execute as @a[tag=water,scores={sneak=1..}] if block ~ ~-0.1 ~ water run effect clear @s levitation
+# execute as @a[tag=water,scores={sneak=1..}] run scoreboard players set @s sneak 0
 
 
 
@@ -10,24 +10,28 @@ execute as @a[tag=water,scores={sneak=1..}] run scoreboard players set @s sneak 
 # ========================================= #
 # execute as @a[tag=!slime] run title @s actionbar ["",{"text":"Mana: ","color":"aqua"},{"score":{"name":"@s","objective":"Mana"},"color":"aqua"},{"text":"/","color":"aqua"},{"score":{"name":"@s","objective":"mana_max"},"color":"aqua"}]
 
-# scoreboard players add @a mana_ticks 1
-# execute as @a if score @s Mana < @s mana_max run execute if score @s mana_ticks = @s mana_regen_time run scoreboard players operation @s Mana += @s mana_regen_count
-# execute as @a if score @s mana_ticks >= @s mana_regen_time run scoreboard players reset @s mana_ticks
+scoreboard players add @a mana_ticks 1
+execute as @a if score @s Mana < @s mana_max run execute if score @s mana_ticks = @s mana_regen_time run scoreboard players operation @s Mana += @s mana_regen_count
+execute as @a if score @s mana_ticks >= @s mana_regen_time run scoreboard players reset @s mana_ticks
 
 
-# execute as @a if score @s Mana > @s mana_max run scoreboard players operation @s Mana = @s mana_max
+execute as @a if score @s Mana > @s mana_max run scoreboard players operation @s Mana = @s mana_max
 
-# scoreboard players operation @a mana_max = !default mana_max
-
-
-
+scoreboard players operation @a mana_max = !default mana_max
 
 
 
-scoreboard players enable @a reset_mana
+
+
+
+# scoreboard players enable @a reset_mana
 # execute as @a if score @s mana_max < !default mana_max run trigger mana_reset
-execute as @a if score @s reset_mana >= !default reset_mana run function firstdatapack:mana_reset
+# execute as @a if score @s reset_mana >= !default reset_mana run function firstdatapack:mana_reset
 # execute as @a[scores={reset_mana=1..}] run function #mana_reset
+
+scoreboard players enable @a reload_server
+execute as @a[scores={reload_server=1..}] run reload
+execute as @a[scores={reload_server=1..}] run scoreboard players reset @s reload_server
 
 # ========================================= #
 # ========== # CHARACTER PERKS # ========== #
@@ -65,6 +69,13 @@ execute as @a[tag=loser] run function firstdatapack:characters/loser
 
 # == Jack == #
 execute as @a[tag=jack] run function firstdatapack:characters/jack
+
+# == Bleed Ability == #
+execute as @e[tag=bleeding] run function firstdatapack:bleed/bleed_tick
+execute as @e[tag=!bleeding] if score @s hiddenBleadCount >= !max hiddenBleadCount run function firstdatapack:bleed/add_bleed
+execute as @e[tag=bleeding] at @s run particle dust 0.2 0 0 1.5 ~ ~0.75 ~ 0.15 0.3 0.15 10 5 force
+execute as @e[tag=bleeding] at @s run particle dust 0.5 0 0 1.5 ~ ~0.75 ~ 0.15 0.3 0.15 10 5 force
+execute as @e[tag=bleeding] if score @s bleedTimer = !min bleedTimer run function firstdatapack:bleed/remove_bleed
 
 # == default player == #
 execute as @a store result score @s maxPlayerHealth run attribute @s generic.max_health get
